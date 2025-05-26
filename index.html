@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calcolatrice frazioni online gratuita per sommare, sottrarre, moltiplicare e dividere frazioni con esempi ed istruzioni.">
+  <title>Calcolatrice Frazioni - Calcola Frazioni Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #004d99;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    footer {
+      background-color: #004d99;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+    }
+    h1, h2 {
+      color: #00000;
+    }
+    .tool-section {
+      margin-bottom: 30px;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      margin: 5px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #004d99;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003366;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    .faq h3 {
+      margin-bottom: 5px;
+    }
+    a {
+      color: #004d99;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Frazioni</h1>
+    <p>Calcola frazioni online facilmente - somma, sottrai, moltiplica e dividi</p>
+  </header>
+
+  <main>
+    <section class="tool-section">
+      <h2>Strumento Calcolatrice Frazioni</h2>
+      <div>
+        <input type="number" id="num1" placeholder="Numeratore 1"> /
+        <input type="number" id="den1" placeholder="Denominatore 1">
+        <select id="operator">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">×</option>
+          <option value="/">÷</option>
+        </select>
+        <input type="number" id="num2" placeholder="Numeratore 2"> /
+        <input type="number" id="den2" placeholder="Denominatore 2">
+        <button onclick="calculate()">Calcola</button>
+      </div>
+      <div class="result" id="result"></div>
+    </section>
+
+    <section>
+      <h2>Come usare la Calcolatrice Frazioni</h2>
+      <p>Inserisci i numeratori e denominatori delle due frazioni e seleziona l'operazione. Premi su "Calcola" per vedere il risultato.</p>
+    </section>
+
+    <section>
+      <h2>Esempi</h2>
+      <ul>
+        <li>1/2 + 1/3 = 5/6</li>
+        <li>3/4 - 2/5 = 7/20</li>
+        <li>2/3 × 3/4 = 1/2</li>
+        <li>5/6 ÷ 2/3 = 1.25</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Operazioni con le frazioni</h2>
+      <h3>Somma</h3>
+      <p>Per sommare frazioni, trovare un denominatore comune e sommare i numeratori.</p>
+
+      <h3>Sottrazione</h3>
+      <p>Simile alla somma, ma sottraendo i numeratori.</p>
+
+      <h3>Moltiplicazione</h3>
+      <p>Moltiplica numeratore per numeratore e denominatore per denominatore.</p>
+
+      <h3>Divisione</h3>
+      <p>Inverti la seconda frazione e poi moltiplica.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+      <div>
+        <h3>1. Come si calcola una frazione?</h3>
+        <p>Si usano le regole base dell’aritmetica con numeratori e denominatori.</p>
+
+        <h3>2. Posso inserire frazioni negative?</h3>
+        <p>Sì, inserisci numeri negativi nei campi numeratore o denominatore.</p>
+
+        <h3>3. Supporta numeri misti?</h3>
+        <p>Non in questa versione, ma puoi convertirli in frazioni improprie.</p>
+
+        <h3>4. Quali operazioni supporta?</h3>
+        <p>Somma, sottrazione, moltiplicazione e divisione.</p>
+
+        <h3>5. È gratuita?</h3>
+        <p>Sì, è completamente gratuita e disponibile online.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Altri Strumenti Utili</h2>
+      <ul>
+        <li><a href="/calcolatrice-frazioni-miste">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="/convertitore-frazione-decimale">Convertitore Frazione a Decimale</a></li>
+        <li><a href="/calcolatrice-moltiplicazione-frazioni">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="/calcolatrice-frazioni-variabili">Calcolatrice Frazioni con Variabili</a></li>
+        <li><a href="/calcolatrice-frazioni-semplificate">Calcolatrice Frazioni Semplificate</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function calculate() {
+      const n1 = parseInt(document.getElementById("num1").value);
+      const d1 = parseInt(document.getElementById("den1").value);
+      const n2 = parseInt(document.getElementById("num2").value);
+      const d2 = parseInt(document.getElementById("den2").value);
+      const op = document.getElementById("operator").value;
+
+      if (isNaN(n1) || isNaN(d1) || isNaN(n2) || isNaN(d2) || d1 === 0 || d2 === 0) {
+        document.getElementById("result").innerText = "Inserisci valori validi (i denominatori non possono essere zero).";
+        return;
+      }
+
+      let resultNumerator = 0, resultDenominator = 1;
+
+      switch(op) {
+        case '+':
+          resultNumerator = n1 * d2 + n2 * d1;
+          resultDenominator = d1 * d2;
+          break;
+        case '-':
+          resultNumerator = n1 * d2 - n2 * d1;
+          resultDenominator = d1 * d2;
+          break;
+        case '*':
+          resultNumerator = n1 * n2;
+          resultDenominator = d1 * d2;
+          break;
+        case '/':
+          resultNumerator = n1 * d2;
+          resultDenominator = d1 * n2;
+          break;
+      }
+
+      const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+      const common = gcd(Math.abs(resultNumerator), Math.abs(resultDenominator));
+      resultNumerator /= common;
+      resultDenominator /= common;
+
+      document.getElementById("result").innerText = `Risultato: ${resultNumerator}/${resultDenominator}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Converti facilmente numeri decimali in frazioni con la nostra Calcolatrice Decimali a Frazioni online gratuita. Include esempi e istruzioni dettagliate.">
+  <title>Calcolatrice Decimali a Frazioni - Convertitore Online Gratuito</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; color: #333; }
+    header { background-color: #004d99; color: white; padding: 20px; text-align: center; }
+    footer { background-color: #004d99; color: white; padding: 10px; text-align: center; margin-top: 40px; }
+    main { max-width: 800px; margin: 0 auto; padding: 20px; background: white; }
+    h1, h2 { color: #00000; }
+    .tool-section { margin-bottom: 30px; }
+    input[type="text"] { width: 200px; padding: 5px; margin: 5px; }
+    button { padding: 8px 16px; background-color: #004d99; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #003366; }
+    .result { margin-top: 15px; font-weight: bold; }
+    .faq { margin-top: 30px; }
+    .faq h3 { margin-bottom: 5px; }
+    a { color: #004d99; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Decimali a Frazioni</h1>
+    <p>Converti decimali in frazioni in un clic</p>
+  </header>
+
+  <main>
+    <section class="tool-section">
+      <h2>Strumento Convertitore Decimali a Frazioni</h2>
+      <div>
+        <input type="text" id="decimalInput" placeholder="Inserisci numero decimale">
+        <button onclick="convertDecimal()">Converti</button>
+      </div>
+      <div class="result" id="decimalResult"></div>
+    </section>
+
+    <section>
+      <h2>Come usare la Calcolatrice Decimali a Frazioni</h2>
+      <p>Scrivi un numero decimale come <code>0.75</code> o <code>3.5</code> e clicca su "Converti" per ottenere la frazione equivalente.</p>
+    </section>
+
+    <section>
+      <h2>Esempi</h2>
+      <ul>
+        <li>0.5 = 1/2</li>
+        <li>0.25 = 1/4</li>
+        <li>1.75 = 7/4</li>
+        <li>2.125 = 17/8</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Perché convertire decimali in frazioni?</h2>
+      <p>Le frazioni sono spesso preferite in contesti matematici e scientifici per una maggiore precisione. Usare frazioni aiuta anche a semplificare calcoli e confronti.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+      <div>
+        <h3>1. Che tipo di numeri posso inserire?</h3>
+        <p>Puoi inserire numeri decimali positivi e negativi.</p>
+
+        <h3>2. Il risultato è semplificato?</h3>
+        <p>Sì, la frazione restituita è sempre semplificata al minimo comune denominatore.</p>
+
+        <h3>3. Supporta numeri decimali periodici?</h3>
+        <p>Attualmente no. Funziona con numeri decimali finiti.</p>
+
+        <h3>4. Posso usare questo strumento gratuitamente?</h3>
+        <p>Assolutamente sì, lo strumento è completamente gratuito.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Altri Strumenti Utili</h2>
+      <ul>
+        <li><a href="index.html">Calcolatrice Frazioni (pagina principale)</a></li>
+        <li><a href="#">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="#">Convertitore Frazione a Decimale</a></li>
+        <li><a href="#">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="#">Calcolatrice Frazioni con Variabili</a></li>
+        <li><a href="#">Calcolatrice Frazioni Semplificate</a></li>
+      </ul>
+      <p>Visita la nostra <a href="index.html">pagina principale della calcolatrice frazioni</a> per ulteriori strumenti di calcolo frazioni.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function convertDecimal() {
+      const input = document.getElementById("decimalInput").value.trim();
+      const decimal = parseFloat(input);
+
+      if (isNaN(decimal)) {
+        document.getElementById("decimalResult").innerText = "Inserisci un numero decimale valido.";
+        return;
+      }
+
+      const [integerPart, decimalPart] = input.split(".");
+      if (!decimalPart) {
+        document.getElementById("decimalResult").innerText = `Risultato: ${decimal}/1`;
+        return;
+      }
+
+      const denominator = Math.pow(10, decimalPart.length);
+      const numerator = Math.round(decimal * denominator);
+
+      const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+      const common = gcd(numerator, denominator);
+      const simplifiedNumerator = numerator / common;
+      const simplifiedDenominator = denominator / common;
+
+      document.getElementById("decimalResult").innerText = `Risultato: ${simplifiedNumerator}/${simplifiedDenominator}`;
+    }
+  </script>
+</body>
+</html>
