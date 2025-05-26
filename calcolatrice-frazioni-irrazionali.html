@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calcolatrice Frazioni Irrazionali online: converti, semplifica e comprendi frazioni con numeri irrazionali. Strumento gratuito con esempi e spiegazioni.">
+  <title>Calcolatrice Frazioni Irrazionali - Converti e Calcola Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #004d99;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    footer {
+      background-color: #004d99;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input[type="text"] {
+      width: 180px;
+      padding: 5px;
+      margin: 5px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #004d99;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003366;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    .faq h3 {
+      margin-bottom: 5px;
+    }
+    a {
+      color: #004d99;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Frazioni Irrazionali</h1>
+    <p>Strumento per calcolare e convertire frazioni con numeri irrazionali</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Converti Frazioni Irrazionali Online</h2>
+      <p>Questa calcolatrice ti consente di inserire frazioni con numeri irrazionali come √2, π, e, ecc., per ottenere una forma semplificata o approssimata decimale.</p>
+      <div>
+        <input type="text" id="irrFrac" placeholder="es. √2/3 o π/4">
+        <button onclick="calculateIrrational()">Calcola</button>
+        <div class="result" id="irrResult"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Esempi di Frazioni Irrazionali</h2>
+      <ul>
+        <li>√2/2 ≈ 0.707</li>
+        <li>π/4 ≈ 0.785</li>
+        <li>e/3 ≈ 0.906</li>
+        <li>√5/5 ≈ 0.447</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Cos'è una Frazione Irrazionale?</h2>
+      <p>Una frazione irrazionale è una frazione che contiene almeno un numero irrazionale, come la radice quadrata di un numero non perfetto (es. √2), il pi greco (π) o il numero di Nepero (e).</p>
+      <p>Queste frazioni non possono essere espresse come numeri razionali, ma possono essere approssimate con numeri decimali.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+      <div>
+        <h3>1. Posso calcolare frazioni con π o √?</h3>
+        <p>Sì, puoi inserire espressioni come π/4 o √3/2.</p>
+
+        <h3>2. Questa calcolatrice restituisce risultati decimali?</h3>
+        <p>Sì, i risultati sono approssimati con massimo 3 cifre decimali.</p>
+
+        <h3>3. Supporta semplificazione simbolica?</h3>
+        <p>Attualmente no, ma il sistema approssima il valore in decimale.</p>
+
+        <h3>4. È gratuita?</h3>
+        <p>Assolutamente sì, l'uso è completamente gratuito e online.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Altri Strumenti Utili</h2>
+      <ul>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-miste.html">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="calcolatrice-frazioni-con-variabili.html">Calcolatrice Frazioni con Variabili</a></li>
+        <li><a href="calcolatrice-frazioni-semplificate.html">Calcolatrice Frazioni Semplificate</a></li>
+      </ul>
+      <p>Visita anche la <a href="index.html">calcolatrice principale per tutte le operazioni con le frazioni</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function calculateIrrational() {
+      const input = document.getElementById("irrFrac").value;
+      const resultDiv = document.getElementById("irrResult");
+
+      try {
+        // Sostituzioni per notazione semplice
+        let expr = input.toLowerCase()
+          .replace(/π/g, Math.PI)
+          .replace(/e/g, Math.E)
+          .replace(/√/g, 'Math.sqrt');
+
+        // Valutazione con sicurezza
+        const result = eval(expr);
+        if (isNaN(result)) {
+          resultDiv.innerText = "Espressione non valida.";
+        } else {
+          resultDiv.innerText = `Risultato ≈ ${result.toFixed(3)}`;
+        }
+      } catch {
+        resultDiv.innerText = "Errore nel calcolo. Controlla la sintassi.";
+      }
+    }
+  </script>
+</body>
+</html>

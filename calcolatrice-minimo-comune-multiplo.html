@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Calcolatrice Minimo Comune Multiplo (MCM) online gratuita. Calcola facilmente il minimo comune multiplo di due o più numeri." />
+  <title>Calcolatrice Minimo Comune Multiplo (MCM) - Calcola MCM Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0; padding: 0;
+      color: #333;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input {
+      padding: 10px;
+      margin: 10px 10px 20px 0;
+      width: 100%;
+      max-width: 300px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Minimo Comune Multiplo (MCM)</h1>
+    <p>Calcola il Minimo Comune Multiplo di due o più numeri in modo semplice e veloce</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Strumento Online per Calcolare il Minimo Comune Multiplo</h2>
+      <p>Inserisci due o più numeri separati da virgola (es. 12, 18, 24) e calcola il loro MCM.</p>
+      <label for="numbersInput">Numeri (separati da virgola):</label>
+      <input type="text" id="numbersInput" placeholder="es. 12, 18, 24" />
+      <button onclick="calculateLCM()">Calcola MCM</button>
+      <div class="result" id="lcmResult"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di Calcolo Minimo Comune Multiplo</h2>
+      <ul>
+        <li>MCM di 12 e 18 = 36</li>
+        <li>MCM di 5 e 10 = 10</li>
+        <li>MCM di 4, 6 e 8 = 24</li>
+        <li>MCM di 7 e 9 = 63</li>
+        <li>MCM di 15, 20, 30 = 60</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come funziona?</h2>
+      <p>Il Minimo Comune Multiplo di un gruppo di numeri è il più piccolo numero positivo che è divisibile per tutti i numeri dati. Questo strumento calcola il MCM usando il metodo dei fattori primi e la funzione matematica del massimo comune divisore (MCD).</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Posso inserire più di due numeri?</h3>
+      <p>Sì, puoi inserire qualsiasi quantità di numeri separati da virgola.</p>
+
+      <h3>2. Posso inserire numeri negativi o decimali?</h3>
+      <p>La calcolatrice funziona solo con numeri interi positivi.</p>
+
+      <h3>3. Cosa succede se inserisco un numero zero?</h3>
+      <p>Lo zero non è considerato nel calcolo del MCM perché qualsiasi numero moltiplicato per zero è zero.</p>
+
+      <h3>4. Perché calcolare il MCM è utile?</h3>
+      <p>Il MCM è utile per risolvere problemi di frazioni con denominatori diversi, sincronizzare eventi ciclici e altre applicazioni matematiche.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti matematici utili</h2>
+      <ul>
+        <li><a href="calcolatrice-frazioni-semplici.html">Calcolatrice Frazioni Semplificate</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-miste.html">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="calcolatrice-frazioni-irrazionali.html">Calcolatrice Frazioni Irrazionali</a></li>
+      </ul>
+      <p>Scopri tutti i nostri strumenti matematici visitando la <a href="index.html">pagina principale delle calcolatrici di frazioni e numeri</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    // Funzione per calcolare il massimo comune divisore (MCD)
+    function gcd(a, b) {
+      while (b !== 0) {
+        [a, b] = [b, a % b];
+      }
+      return a;
+    }
+
+    // Funzione per calcolare il minimo comune multiplo di due numeri
+    function lcm(a, b) {
+      return (a * b) / gcd(a, b);
+    }
+
+    // Funzione per calcolare il MCM di un array di numeri
+    function calculateLCM() {
+      const input = document.getElementById('numbersInput').value;
+      const resultDiv = document.getElementById('lcmResult');
+      const numbers = input.split(',').map(n => n.trim()).filter(n => n !== '');
+
+      if (numbers.length < 2) {
+        resultDiv.innerText = "Inserisci almeno due numeri separati da virgola";
+        return;
+      }
+
+      // Verifica input numerico intero positivo
+      for (let num of numbers) {
+        if (!/^\d+$/.test(num) || parseInt(num) === 0) {
+          resultDiv.innerText = "Inserisci solo numeri interi positivi e diversi da zero";
+          return;
+        }
+      }
+
+      const intNumbers = numbers.map(Number);
+      let currentLCM = intNumbers[0];
+
+      for (let i = 1; i < intNumbers.length; i++) {
+        currentLCM = lcm(currentLCM, intNumbers[i]);
+      }
+
+      resultDiv.innerText = `Il Minimo Comune Multiplo di [${intNumbers.join(', ')}] è: ${currentLCM}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Moltiplica due frazioni in modo facile e veloce con la nostra Calcolatrice Moltiplicazione Frazioni. Ottieni il risultato semplificato e in decimale.">
+  <title>Calcolatrice Moltiplicazione Frazioni - Online Gratuita</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: white;
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Moltiplicazione Frazioni</h1>
+    <p>Moltiplica frazioni in pochi secondi con risultati semplificati e in formato decimale</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Strumento Online per Moltiplicare Frazioni</h2>
+      <p>Inserisci due frazioni (es. 2/3 e 4/5) e clicca per calcolare il prodotto.</p>
+      <input type="text" id="fraction1" placeholder="es. 2/3" />
+      <input type="text" id="fraction2" placeholder="es. 4/5" />
+      <button onclick="multiplyFractions()">Calcola Moltiplicazione</button>
+      <div class="result" id="multiplyResult"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di Moltiplicazione Frazioni</h2>
+      <ul>
+        <li>2/3 × 3/4 = 6/12 = 1/2</li>
+        <li>5/8 × 4/7 = 20/56 = 5/14</li>
+        <li>3/5 × 10/9 = 30/45 = 2/3</li>
+        <li>1/2 × 1/2 = 1/4</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come Funziona?</h2>
+      <p>La calcolatrice moltiplica direttamente i numeratori e i denominatori delle due frazioni e semplifica automaticamente il risultato. Mostra anche il valore decimale per chiarezza.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Devo usare frazioni con lo stesso denominatore?</h3>
+      <p>No, per la moltiplicazione non è necessario. I denominatori possono essere diversi.</p>
+
+      <h3>2. Il risultato è sempre semplificato?</h3>
+      <p>Sì, il sistema semplifica sempre il risultato alla forma più ridotta.</p>
+
+      <h3>3. Posso usare frazioni negative?</h3>
+      <p>Sì, è possibile inserire frazioni negative come -2/3 o -1/4.</p>
+
+      <h3>4. Il risultato viene mostrato anche in formato decimale?</h3>
+      <p>Sì, vedrai sia la frazione semplificata sia il numero decimale corrispondente.</p>
+    </section>
+
+    <section>
+      <h2>Altri Strumenti per le Frazioni</h2>
+      <ul>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-miste.html">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="calcolatrice-frazioni-irrazionali.html">Calcolatrice Frazioni Irrazionali</a></li>
+      </ul>
+      <p>Visita la nostra <a href="index.html">pagina principale per le calcolatrici di frazioni</a> per accedere a tutti gli strumenti disponibili.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function gcd(a, b) {
+      return b === 0 ? a : gcd(b, a % b);
+    }
+
+    function multiplyFractions() {
+      const f1 = document.getElementById('fraction1').value.trim();
+      const f2 = document.getElementById('fraction2').value.trim();
+      const resultDiv = document.getElementById('multiplyResult');
+
+      const regex = /^(-?\d+)\/(\d+)$/;
+
+      if (!regex.test(f1) || !regex.test(f2)) {
+        resultDiv.innerText = "Inserisci due frazioni valide nel formato a/b";
+        return;
+      }
+
+      const [, n1, d1] = f1.match(regex).map(Number);
+      const [, n2, d2] = f2.match(regex).map(Number);
+
+      const numerator = n1 * n2;
+      const denominator = d1 * d2;
+      const commonDiv = gcd(Math.abs(numerator), denominator);
+
+      const simplifiedNum = numerator / commonDiv;
+      const simplifiedDen = denominator / commonDiv;
+      const decimal = simplifiedNum / simplifiedDen;
+
+      resultDiv.innerHTML = `
+        Risultato: ${simplifiedNum}/${simplifiedDen} <br>
+        Forma decimale: ${decimal.toFixed(3)}
+      `;
+    }
+  </script>
+</body>
+</html>

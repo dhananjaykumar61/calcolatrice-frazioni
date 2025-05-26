@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Calcolatrice Frazioni Semplificate gratuita online. Semplifica qualsiasi frazione facilmente e ottieni il risultato ridotto ai minimi termini." />
+  <title>Calcolatrice Frazioni Semplificate - Semplifica Frazioni Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0; padding: 0;
+      color: #333;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input {
+      padding: 10px;
+      margin: 10px 10px 20px 0;
+      width: 150px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Frazioni Semplificate</h1>
+    <p>Semplifica qualsiasi frazione ai minimi termini in modo semplice e veloce</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Strumento Online per Semplificare Frazioni</h2>
+      <p>Inserisci una frazione nel formato <em>a/b</em> e ottieni la sua forma semplificata automaticamente.</p>
+      <input type="text" id="fractionInput" placeholder="es. 18/24" />
+      <br/>
+      <button onclick="simplifyFraction()">Semplifica Frazione</button>
+      <div class="result" id="simplifyResult"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di Frazioni Semplificate</h2>
+      <ul>
+        <li>18/24 = 3/4</li>
+        <li>12/16 = 3/4</li>
+        <li>45/60 = 3/4</li>
+        <li>100/250 = 2/5</li>
+        <li>-9/12 = -3/4</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come funziona?</h2>
+      <p>La calcolatrice trova il massimo comune divisore (MCD) tra numeratore e denominatore e divide entrambi per questo valore per ottenere la frazione più semplice possibile.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Qual è il formato corretto per inserire la frazione?</h3>
+      <p>Usa il formato <code>numeratore/denominatore</code>, ad esempio 18/24 o -9/12.</p>
+
+      <h3>2. Posso semplificare frazioni con numeratore o denominatore negativo?</h3>
+      <p>Sì, la calcolatrice gestisce anche frazioni negative.</p>
+
+      <h3>3. Cosa succede se inserisco un numero intero?</h3>
+      <p>Se inserisci un numero senza denominatore, la calcolatrice lo tratterà come frazione con denominatore 1.</p>
+
+      <h3>4. La calcolatrice gestisce frazioni improprie?</h3>
+      <p>Sì, frazioni improprie e proprie vengono entrambe semplificate correttamente.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti per lavorare con le frazioni</h2>
+      <ul>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-miste.html">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="calcolatrice-frazioni-irrazionali.html">Calcolatrice Frazioni Irrazionali</a></li>
+      </ul>
+      <p>Visita la <a href="index.html">pagina principale delle calcolatrici di frazioni</a> per tutti i nostri strumenti.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function gcd(a, b) {
+      return b === 0 ? a : gcd(b, a % b);
+    }
+
+    function simplifyFraction() {
+      const input = document.getElementById('fractionInput').value.trim();
+      const resultDiv = document.getElementById('simplifyResult');
+      const regex = /^(-?\d+)\/(\d+)$/;
+
+      if (!regex.test(input)) {
+        // Se è solo un numero intero
+        if (/^-?\d+$/.test(input)) {
+          resultDiv.innerText = `Risultato: ${input} (equivale a ${input}/1)`;
+          return;
+        }
+        resultDiv.innerText = "Inserisci una frazione valida nel formato a/b";
+        return;
+      }
+
+      const [, numerator, denominator] = input.match(regex).map(Number);
+
+      if (denominator === 0) {
+        resultDiv.innerText = "Il denominatore non può essere zero";
+        return;
+      }
+
+      const commonDivisor = gcd(Math.abs(numerator), Math.abs(denominator));
+      let num = numerator / commonDivisor;
+      let den = denominator / commonDivisor;
+
+      // Assicura denominatore positivo
+      if (den < 0) {
+        den = -den;
+        num = -num;
+      }
+
+      if (den === 1) {
+        resultDiv.innerText = `Risultato: ${num}`;
+      } else {
+        resultDiv.innerText = `Risultato: ${num}/${den}`;
+      }
+    }
+  </script>
+</body>
+</html>
