@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convertitore online gratuito da percentuale a frazione. Trasforma facilmente una percentuale in una frazione semplificata." />
+  <title>Convertitore Percentuale a Frazione - Calcolatrice Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #006600;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Convertitore Percentuale a Frazione</h1>
+    <p>Trasforma facilmente qualsiasi percentuale in una frazione semplificata</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Converti Percentuale in Frazione</h2>
+      <p>Inserisci un valore percentuale e ottieni la frazione semplificata corrispondente.</p>
+      <label for="percentageInput">Percentuale (%):</label>
+      <input type="text" id="percentageInput" placeholder="es. 75%" />
+      <button onclick="convertPercentageToFraction()">Converti</button>
+      <div class="result" id="fractionResult"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di Conversione</h2>
+      <ul>
+        <li>50% = 1/2</li>
+        <li>25% = 1/4</li>
+        <li>75% = 3/4</li>
+        <li>20% = 1/5</li>
+        <li>12.5% = 1/8</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come funziona il convertitore?</h2>
+      <p>La percentuale rappresenta una parte su 100. Per convertirla in frazione, si elimina il simbolo "%" e si considera il numero come numeratore su 100 come denominatore, quindi si semplifica la frazione.</p>
+      <p>Ad esempio, 75% = 75/100 che semplificato diventa 3/4.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+      
+      <h3>1. Posso inserire percentuali con decimali?</h3>
+      <p>Sì, il convertitore supporta percentuali con valori decimali come 12.5%.</p>
+      
+      <h3>2. Devo inserire il simbolo %?</h3>
+      <p>Il simbolo "%" è opzionale. Puoi inserire sia "75" che "75%".</p>
+      
+      <h3>3. Cosa succede se inserisco valori superiori a 100%?</h3>
+      <p>Il convertitore funziona anche con percentuali superiori a 100%, convertendole in frazioni improprie.</p>
+      
+      <h3>4. Come viene semplificata la frazione?</h3>
+      <p>Il sistema trova il massimo comune divisore (MCD) tra numeratore e denominatore e divide entrambi per semplificare la frazione.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti correlati</h2>
+      <ul>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-semplici.html">Calcolatrice Frazioni Semplificate</a></li>
+        <li><a href="calcolatrice-minimo-comune-multiplo.html">Calcolatrice Minimo Comune Multiplo</a></li>
+        <li><a href="calcolatrice-massimo-comun-divisore.html">Calcolatrice Massimo Comune Divisore</a></li>
+      </ul>
+      <p>Visita la nostra <a href="index.html">pagina principale delle calcolatrici matematiche</a> per scoprire tutti gli strumenti disponibili.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ConvertitorePercentualeFrazione.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    // Funzione per calcolare il massimo comune divisore (MCD)
+    function gcd(a, b) {
+      while (b !== 0) {
+        [a, b] = [b, a % b];
+      }
+      return a;
+    }
+
+    // Funzione per convertire percentuale in frazione semplificata
+    function convertPercentageToFraction() {
+      const input = document.getElementById('percentageInput').value.trim();
+      const resultDiv = document.getElementById('fractionResult');
+
+      if (!input) {
+        resultDiv.innerText = "Per favore inserisci una percentuale.";
+        return;
+      }
+
+      // Rimuove il simbolo % se presente
+      const valueStr = input.replace('%', '');
+      const valueNum = parseFloat(valueStr);
+
+      if (isNaN(valueNum) || valueNum < 0) {
+        resultDiv.innerText = "Inserisci un numero percentuale valido e positivo.";
+        return;
+      }
+
+      // Trasformazione percentuale in frazione: valueNum / 100
+      let numerator = Math.round(valueNum * 1000); // moltiplichiamo per 1000 per precisione decimali
+      let denominator = 100 * 1000;
+
+      // Calcolo MCD per semplificare
+      const divisor = gcd(numerator, denominator);
+      numerator = numerator / divisor;
+      denominator = denominator / divisor;
+
+      // Se denominatore è 1 => frazione intera
+      let fractionStr;
+      if (denominator === 1) {
+        fractionStr = numerator.toString();
+      } else {
+        fractionStr = `${numerator}/${denominator}`;
+      }
+
+      resultDiv.innerText = `${valueNum}% corrisponde alla frazione semplificata: ${fractionStr}`;
+    }
+  </script>
+</body>
+</html>

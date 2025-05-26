@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convertitore online da numero misto a frazione impropria. Trasforma facilmente numeri misti in frazioni con il nostro strumento gratuito." />
+  <title>Convertitore Numero Misto a Frazione - Trasforma Numeri Misti in Frazioni</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input[type="number"] {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #006600;
+      word-wrap: break-word;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Convertitore Numero Misto a Frazione</h1>
+    <p>Trasforma numeri misti in frazioni improprie in modo semplice e veloce.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Inserisci il numero misto da convertire</h2>
+      <label for="wholeInput">Parte intera:</label>
+      <input type="number" id="wholeInput" placeholder="Es. 2" />
+      <label for="numeratorInput">Numeratore della frazione:</label>
+      <input type="number" id="numeratorInput" placeholder="Es. 3" />
+      <label for="denominatorInput">Denominatore della frazione:</label>
+      <input type="number" id="denominatorInput" placeholder="Es. 4" />
+      <button onclick="convertMixedToFraction()">Converti</button>
+      <div class="result" id="resultOutput"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di conversione</h2>
+      <ul>
+        <li>2 3/4 = 11/4</li>
+        <li>1 1/2 = 3/2</li>
+        <li>5 2/3 = 17/3</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Cos'è una frazione impropria?</h2>
+      <p>Una frazione impropria è una frazione il cui numeratore è maggiore o uguale al denominatore. I numeri misti possono essere facilmente convertiti in frazioni improprie per facilitare operazioni matematiche.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Come si converte un numero misto in frazione impropria?</h3>
+      <p>Moltiplica la parte intera per il denominatore e somma il numeratore. Questo sarà il nuovo numeratore, mentre il denominatore resta lo stesso.</p>
+
+      <h3>2. Posso inserire numeri negativi?</h3>
+      <p>Sì, il convertitore supporta numeri misti con valori negativi.</p>
+
+      <h3>3. Cosa succede se la frazione è già propria?</h3>
+      <p>Se la parte frazionaria è propria (numeratore < denominatore), la conversione funziona normalmente. Se la parte frazionaria è impropria, è consigliato prima semplificarla.</p>
+
+      <h3>4. Posso inserire zero nella parte intera?</h3>
+      <p>Sì, il convertitore gestisce anche numeri misti con parte intera zero (cioè frazioni proprie).</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti utili</h2>
+      <ul>
+        <li><a href="convertitore-frazione-a-numero-misto.html">Convertitore Frazione a Numero Misto</a></li>
+        <li><a href="calcolatrice-frazioni-improprie.html">Calcolatrice Frazioni Improprie</a></li>
+        <li><a href="calcolatrice-frazioni-miste.html">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+      </ul>
+      <p>Visita la nostra <a href="index.html">pagina principale delle calcolatrici online</a> per scoprire tutti gli strumenti disponibili.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriciOnline.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function convertMixedToFraction() {
+      const whole = parseInt(document.getElementById('wholeInput').value);
+      const numerator = parseInt(document.getElementById('numeratorInput').value);
+      const denominator = parseInt(document.getElementById('denominatorInput').value);
+      const output = document.getElementById('resultOutput');
+
+      if (isNaN(whole) || isNaN(numerator) || isNaN(denominator)) {
+        output.innerText = "Inserisci valori numerici validi per parte intera, numeratore e denominatore.";
+        return;
+      }
+      if (denominator === 0) {
+        output.innerText = "Errore: il denominatore non può essere zero.";
+        return;
+      }
+      if (numerator < 0 || denominator < 0) {
+        output.innerText = "Inserisci valori positivi per numeratore e denominatore.";
+        return;
+      }
+
+      const improperNumerator = Math.abs(whole) * denominator + numerator;
+      const sign = (whole < 0) ? "-" : "";
+
+      output.innerText = `Il numero misto ${whole} ${numerator}/${denominator} corrisponde alla frazione impropria ${sign}${improperNumerator}/${denominator}.`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convertitore online gratuito da frazione a percentuale. Trasforma facilmente qualsiasi frazione in una percentuale precisa." />
+  <title>Convertitore Frazione a Percentuale - Calcolatrice Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #006600;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Convertitore Frazione a Percentuale</h1>
+    <p>Converti facilmente qualsiasi frazione in percentuale con il nostro strumento online gratuito</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Converti Frazione in Percentuale</h2>
+      <p>Inserisci una frazione (es. 3/4) per ottenere la percentuale corrispondente.</p>
+      <label for="fractionInput">Frazione (numeratore/denominatore):</label>
+      <input type="text" id="fractionInput" placeholder="es. 3/4" />
+      <button onclick="convertFractionToPercentage()">Converti</button>
+      <div class="result" id="percentageResult"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di Conversione</h2>
+      <ul>
+        <li>1/2 = 50%</li>
+        <li>1/4 = 25%</li>
+        <li>3/4 = 75%</li>
+        <li>2/5 = 40%</li>
+        <li>1/8 = 12.5%</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come funziona il convertitore?</h2>
+      <p>Il convertitore calcola la divisione del numeratore per il denominatore e moltiplica il risultato per 100 per ottenere la percentuale.</p>
+      <p>Ad esempio, 3/4 = 0.75 × 100 = 75%.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+      
+      <h3>1. Qual è il formato corretto per inserire la frazione?</h3>
+      <p>Inserisci la frazione nel formato <code>numeratore/denominatore</code>, ad esempio 3/4 o 1/2.</p>
+      
+      <h3>2. Posso inserire frazioni con numeratore o denominatore decimale?</h3>
+      <p>Il convertitore funziona meglio con numeri interi, ma supporta anche valori decimali.</p>
+      
+      <h3>3. Cosa succede se inserisco un denominatore pari a zero?</h3>
+      <p>Il denominatore non può essere zero. Il sistema mostrerà un messaggio di errore in questo caso.</p>
+      
+      <h3>4. Posso usare frazioni improprie?</h3>
+      <p>Sì, il convertitore accetta anche frazioni improprie come 7/4 e le converte correttamente in percentuale.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti correlati</h2>
+      <ul>
+        <li><a href="convertitore-percentuale-a-frazione.html">Convertitore Percentuale a Frazione</a></li>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-semplici.html">Calcolatrice Frazioni Semplificate</a></li>
+        <li><a href="calcolatrice-minimo-comune-multiplo.html">Calcolatrice Minimo Comune Multiplo</a></li>
+        <li><a href="calcolatrice-massimo-comun-divisore.html">Calcolatrice Massimo Comune Divisore</a></li>
+      </ul>
+      <p>Visita la nostra <a href="index.html">pagina principale delle calcolatrici matematiche</a> per scoprire tutti gli strumenti disponibili.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ConvertitoreFrazionePercentuale.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function convertFractionToPercentage() {
+      const input = document.getElementById('fractionInput').value.trim();
+      const resultDiv = document.getElementById('percentageResult');
+
+      if (!input) {
+        resultDiv.innerText = "Per favore inserisci una frazione.";
+        return;
+      }
+
+      // Verifica formato frazione con regex (es. "3/4")
+      const fractionRegex = /^(\d+(\.\d+)?)[\/](\d+(\.\d+)?)$/;
+      const match = input.match(fractionRegex);
+
+      if (!match) {
+        resultDiv.innerText = "Formato frazione non valido. Usa numeratore/denominatore, es. 3/4.";
+        return;
+      }
+
+      const numerator = parseFloat(match[1]);
+      const denominator = parseFloat(match[3]);
+
+      if (denominator === 0) {
+        resultDiv.innerText = "Il denominatore non può essere zero.";
+        return;
+      }
+
+      const percentage = (numerator / denominator) * 100;
+
+      resultDiv.innerText = `${input} corrisponde al ${percentage.toFixed(2)}%`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Calcolatrice Massimo Comune Divisore (MCD) online gratuita. Calcola facilmente il massimo comune divisore di due o più numeri interi positivi." />
+  <title>Calcolatrice Massimo Comune Divisore (MCD) - Calcola MCD Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0; padding: 0;
+      color: #333;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input {
+      padding: 10px;
+      margin: 10px 10px 20px 0;
+      width: 100%;
+      max-width: 300px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Massimo Comune Divisore (MCD)</h1>
+    <p>Calcola il Massimo Comune Divisore di due o più numeri interi positivi</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Strumento Online per Calcolare il Massimo Comune Divisore</h2>
+      <p>Inserisci due o più numeri separati da virgola (es. 24, 36, 60) e calcola il loro MCD.</p>
+      <label for="numbersInput">Numeri (separati da virgola):</label>
+      <input type="text" id="numbersInput" placeholder="es. 24, 36, 60" />
+      <button onclick="calculateGCD()">Calcola MCD</button>
+      <div class="result" id="gcdResult"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di Calcolo Massimo Comune Divisore</h2>
+      <ul>
+        <li>MCD di 24 e 36 = 12</li>
+        <li>MCD di 18 e 27 = 9</li>
+        <li>MCD di 20, 30 e 40 = 10</li>
+        <li>MCD di 7 e 13 = 1</li>
+        <li>MCD di 48, 64, 80 = 16</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come funziona?</h2>
+      <p>Il Massimo Comune Divisore (MCD) è il numero più grande che divide esattamente due o più numeri interi positivi senza lasciare resto. Questo calcolatore utilizza l'algoritmo di Euclide per calcolare il MCD in modo efficiente.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Posso inserire più di due numeri?</h3>
+      <p>Sì, puoi inserire qualsiasi quantità di numeri interi positivi separati da virgola.</p>
+
+      <h3>2. Posso inserire numeri negativi o decimali?</h3>
+      <p>La calcolatrice funziona solo con numeri interi positivi. I numeri negativi o decimali non sono accettati.</p>
+
+      <h3>3. Cosa succede se inserisco zero?</h3>
+      <p>Zero non è considerato nel calcolo del MCD. L'algoritmo ignorerà gli zeri inseriti.</p>
+
+      <h3>4. Perché calcolare il MCD è utile?</h3>
+      <p>Il MCD è utile per semplificare frazioni, risolvere problemi di divisibilità e trovare rapporti proporzionali tra numeri.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti utili</h2>
+      <ul>
+        <li><a href="calcolatrice-minimo-comune-multiplo.html">Calcolatrice Minimo Comune Multiplo (MCM)</a></li>
+        <li><a href="calcolatrice-frazioni-semplici.html">Calcolatrice Frazioni Semplificate</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-miste.html">Calcolatrice Frazioni Miste</a></li>
+        <li><a href="calcolatrice-frazioni-irrazionali.html">Calcolatrice Frazioni Irrazionali</a></li>
+      </ul>
+      <p>Visita la <a href="index.html">pagina principale delle calcolatrici matematiche</a> per scoprire tutti gli strumenti disponibili.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriceFrazioni.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    // Funzione per calcolare il massimo comune divisore di due numeri (algoritmo di Euclide)
+    function gcdTwo(a, b) {
+      while (b !== 0) {
+        [a, b] = [b, a % b];
+      }
+      return a;
+    }
+
+    // Funzione per calcolare il MCD di un array di numeri
+    function calculateGCD() {
+      const input = document.getElementById('numbersInput').value;
+      const resultDiv = document.getElementById('gcdResult');
+      const numbers = input.split(',').map(n => n.trim()).filter(n => n !== '');
+
+      if (numbers.length < 2) {
+        resultDiv.innerText = "Inserisci almeno due numeri separati da virgola";
+        return;
+      }
+
+      // Verifica input numerico intero positivo
+      for (let num of numbers) {
+        if (!/^\d+$/.test(num) || parseInt(num) === 0) {
+          resultDiv.innerText = "Inserisci solo numeri interi positivi e diversi da zero";
+          return;
+        }
+      }
+
+      const intNumbers = numbers.map(Number);
+      let currentGCD = intNumbers[0];
+
+      for (let i = 1; i < intNumbers.length; i++) {
+        currentGCD = gcdTwo(currentGCD, intNumbers[i]);
+      }
+
+      resultDiv.innerText = `Il Massimo Comune Divisore di [${intNumbers.join(', ')}] è: ${currentGCD}`;
+    }
+  </script>
+</body>
+</html>

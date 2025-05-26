@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Calcolatrice online per trovare frazioni equivalenti facilmente. Inserisci una frazione e scopri tutte le sue frazioni equivalenti." />
+  <title>Calcolatrice Equivalente Frazioni - Trova Frazioni Equivalenti Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input[type="text"], input[type="number"] {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #006600;
+      word-wrap: break-word;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Frazioni Equivalenti</h1>
+    <p>Trova rapidamente le frazioni equivalenti a qualsiasi frazione inserita.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Inserisci una frazione per trovare le sue frazioni equivalenti</h2>
+      <p>Inserisci numeratore e denominatore della frazione di partenza e scegli quante frazioni equivalenti generare.</p>
+      <label for="numInput">Numeratore:</label>
+      <input type="number" id="numInput" placeholder="Es. 3" />
+      <label for="denInput">Denominatore:</label>
+      <input type="number" id="denInput" placeholder="Es. 4" />
+      <label for="countInput">Numero di frazioni equivalenti da generare:</label>
+      <input type="number" id="countInput" value="5" min="1" max="20" />
+      <button onclick="generateEquivalentFractions()">Calcola frazioni equivalenti</button>
+      <div class="result" id="resultOutput"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di frazioni equivalenti</h2>
+      <ul>
+        <li>1/2 = 2/4 = 3/6 = 4/8</li>
+        <li>3/5 = 6/10 = 9/15 = 12/20</li>
+        <li>4/7 = 8/14 = 12/21 = 16/28</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Cos'è una frazione equivalente?</h2>
+      <p>Due frazioni sono equivalenti se rappresentano la stessa quantità, anche se numeratore e denominatore sono diversi. Ad esempio, <code>1/2</code> e <code>2/4</code> sono frazioni equivalenti.</p>
+      <p>Si ottengono moltiplicando numeratore e denominatore per lo stesso numero intero positivo.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Come vengono generate le frazioni equivalenti?</h3>
+      <p>Moltiplichiamo numeratore e denominatore della frazione originale per numeri interi consecutivi.</p>
+
+      <h3>2. Posso inserire frazioni con numeratore o denominatore negativi?</h3>
+      <p>Sì, ma il calcolo delle frazioni equivalenti mantiene il segno.</p>
+
+      <h3>3. Cosa succede se inserisco denominatore zero?</h3>
+      <p>Il denominatore non può essere zero. La calcolatrice mostrerà un errore.</p>
+
+      <h3>4. Posso scegliere quante frazioni equivalenti generare?</h3>
+      <p>Sì, il campo "Numero di frazioni equivalenti" permette di scegliere quanti risultati visualizzare.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti correlati</h2>
+      <ul>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-con-negativi.html">Calcolatrice Frazioni con Negativi</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+      </ul>
+      <p>Per maggiori risorse visita la nostra <a href="index.html">pagina principale delle calcolatrici matematiche</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriciOnline.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function generateEquivalentFractions() {
+      const numerator = parseInt(document.getElementById('numInput').value);
+      const denominator = parseInt(document.getElementById('denInput').value);
+      const count = parseInt(document.getElementById('countInput').value);
+      const output = document.getElementById('resultOutput');
+
+      if (isNaN(numerator) || isNaN(denominator) || isNaN(count)) {
+        output.innerText = "Inserisci valori numerici validi per numeratore, denominatore e quantità.";
+        return;
+      }
+      if (denominator === 0) {
+        output.innerText = "Errore: il denominatore non può essere zero.";
+        return;
+      }
+      if (count < 1 || count > 20) {
+        output.innerText = "Inserisci un numero di frazioni equivalenti tra 1 e 20.";
+        return;
+      }
+
+      let results = [];
+      for (let i = 1; i <= count; i++) {
+        const eqNum = numerator * i;
+        const eqDen = denominator * i;
+        results.push(`${eqNum}/${eqDen}`);
+      }
+      output.innerText = `Frazioni equivalenti a ${numerator}/${denominator}: ${results.join(", ")}`;
+    }
+  </script>
+</body>
+</html>

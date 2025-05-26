@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Calcolatrice online gratuita per frazioni con numeri negativi. Esegui operazioni e conversioni con frazioni negative facilmente." />
+  <title>Calcolatrice Frazioni con Negativi - Strumento Online Gratuito</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #004080;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #002b59;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #006600;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calcolatrice Frazioni con Numeri Negativi</h1>
+    <p>Calcola, semplifica e converti frazioni che includono numeri negativi in modo semplice e veloce.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Inserisci una frazione con numeri negativi</h2>
+      <p>Puoi inserire frazioni con numeratore o denominatore negativi, ad esempio: <code>-3/4</code>, <code>5/-6</code>, o <code>-7/-8</code>.</p>
+      <label for="fractionInput">Frazione (numeratore/denominatore):</label>
+      <input type="text" id="fractionInput" placeholder="es. -3/4" />
+      <button onclick="processNegativeFraction()">Calcola</button>
+      <div class="result" id="resultOutput"></div>
+    </section>
+
+    <section>
+      <h2>Esempi di frazioni negative</h2>
+      <ul>
+        <li>-3/4 = -0.75</li>
+        <li>5/-6 = -0.8333</li>
+        <li>-7/-8 = 0.875</li>
+        <li>-1/2 = -0.5</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Come funziona la calcolatrice?</h2>
+      <p>La calcolatrice interpreta i segni negativi nel numeratore e nel denominatore e calcola il valore decimale corretto della frazione.</p>
+      <p>Se sia numeratore che denominatore sono negativi, la frazione è positiva.</p>
+      <p>Ad esempio: <code>-7/-8 = 0.875</code>.</p>
+    </section>
+
+    <section class="faq">
+      <h2>Domande Frequenti (FAQ)</h2>
+
+      <h3>1. Posso inserire frazioni con segno negativo nel numeratore o denominatore?</h3>
+      <p>Sì, la calcolatrice gestisce correttamente entrambi i casi.</p>
+
+      <h3>2. Cosa succede se il denominatore è zero?</h3>
+      <p>Non è possibile dividere per zero. Il sistema mostrerà un errore se il denominatore è zero.</p>
+
+      <h3>3. La calcolatrice mostra il risultato in forma decimale o frazionaria?</h3>
+      <p>Il risultato è mostrato come numero decimale con quattro cifre decimali di precisione.</p>
+
+      <h3>4. Come si semplificano le frazioni negative?</h3>
+      <p>La semplificazione delle frazioni negative segue le stesse regole delle frazioni positive, mantenendo il segno negativo fuori dalla frazione.</p>
+    </section>
+
+    <section>
+      <h2>Altri strumenti utili</h2>
+      <ul>
+        <li><a href="calcolatrice-frazioni-a-decimali.html">Calcolatrice Frazioni a Decimali</a></li>
+        <li><a href="calcolatrice-decimali-a-frazioni.html">Calcolatrice Decimali a Frazioni</a></li>
+        <li><a href="convertitore-percentuale-a-frazione.html">Convertitore Percentuale a Frazione</a></li>
+        <li><a href="convertitore-frazione-a-percentuale.html">Convertitore Frazione a Percentuale</a></li>
+        <li><a href="calcolatrice-somma-frazioni.html">Calcolatrice Somma Frazioni</a></li>
+        <li><a href="calcolatrice-sottrazione-frazioni.html">Calcolatrice Sottrazione Frazioni</a></li>
+        <li><a href="calcolatrice-moltiplicazione-frazioni.html">Calcolatrice Moltiplicazione Frazioni</a></li>
+        <li><a href="calcolatrice-divisione-frazioni.html">Calcolatrice Divisione Frazioni</a></li>
+        <li><a href="calcolatrice-frazioni-semplici.html">Calcolatrice Frazioni Semplificate</a></li>
+      </ul>
+      <p>Per esplorare tutti i nostri strumenti, visita la <a href="index.html">pagina principale delle calcolatrici matematiche</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CalcolatriciOnline.it - Tutti i diritti riservati</p>
+  </footer>
+
+  <script>
+    function processNegativeFraction() {
+      const input = document.getElementById('fractionInput').value.trim();
+      const output = document.getElementById('resultOutput');
+
+      if (!input) {
+        output.innerText = "Inserisci una frazione valida, ad esempio -3/4.";
+        return;
+      }
+
+      const fractionPattern = /^(-?\d+(\.\d+)?)[\/](-?\d+(\.\d+)?)$/;
+      const match = input.match(fractionPattern);
+
+      if (!match) {
+        output.innerText = "Formato non valido. Usa numeratore/denominatore, es. -3/4.";
+        return;
+      }
+
+      const numerator = parseFloat(match[1]);
+      const denominator = parseFloat(match[3]);
+
+      if (denominator === 0) {
+        output.innerText = "Errore: il denominatore non può essere zero.";
+        return;
+      }
+
+      const value = numerator / denominator;
+      output.innerText = `${input} = ${value.toFixed(4)}`;
+    }
+  </script>
+</body>
+</html>
